@@ -160,7 +160,7 @@
         
         alert("準備好就按下開始！")
         setDefaultOnclick();
-        document.getElementById("userGuess").onkeyup = alertStart;
+        setStartOnkeyup();
         
       }
       
@@ -169,6 +169,13 @@
         document.getElementById("restart").onclick = abortGame;
         document.getElementById("cheat").onclick = showAnswer;
         document.getElementById("guess").onclick = alertStart;
+      }
+      function setStartOnkeyup(){
+        document.getElementById("userGuess").onkeyup = function (eventAAA) {
+          if (eventAAA.keyCode == 13) {
+            alertStart();
+          }
+        }
       }
 
       function setDefaultOnkeyup(){
