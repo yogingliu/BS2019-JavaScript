@@ -160,7 +160,8 @@
         
         alert("準備好就按下開始！")
         setDefaultOnclick();
-        setDefaultOnkeyup();
+        document.getElementById("userGuess").onkeyup = alertStart;
+        
       }
       
       function setDefaultOnclick(){
