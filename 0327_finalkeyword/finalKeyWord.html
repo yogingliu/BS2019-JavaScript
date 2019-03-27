@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!--<link rel="icon" href="../../favicon.ico">-->
+
+    <title>終極密碼</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    
+  </head>
+
+  <body>
+
+    
+
+    <div class="container-fluid">
+     
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+          <div class="container-fluid  bg-dark text-white ">
+            <div class="row">
+              <div class="col-md-12">
+                
+                <div id="buttons">
+                  <div class="input-group col-md-12 mb-4 d-flex flex-column">
+                    <div id="result" class="d-flex justify-content-center col-md-12 bg-transparent text-white text-center" >
+                      <h2 class="mr-4">Range :</h2>
+                      <h2 id="range">
+                        
+                      </h2>
+                    </div>
+                    <div id="input" class="d-flex justify-content-center col-md-12 bg-transparent text-white text-center" type="number">
+                      <h2 class="mr-4">Guess :</h2>
+                      <h2 id="guess">
+                         
+                      </h2>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-4"><a class="btn btn-outline-light btn-block input-pad" href="#" role="button"><h3>1</h3></a></div>
+                    <div class="col-md-4"><a class="btn btn-outline-light btn-block input-pad" href="#" role="button"><h3>2</h3></a></div>
+                    <div class="col-md-4"><a class="btn btn-outline-light btn-block input-pad" href="#" role="button"><h3>3</h3></a></div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-4"><a class="btn btn-outline-light btn-block input-pad" href="#" role="button"><h3>4</h3></a></div>
+                    <div class="col-md-4"><a class="btn btn-outline-light btn-block input-pad" href="#" role="button"><h3>5</h3></a></div>
+                    <div class="col-md-4"><a class="btn btn-outline-light btn-block input-pad" href="#" role="button"><h3>6</h3></a></div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-4"><a class="btn btn-outline-light btn-block input-pad" href="#" role="button"><h3>7</h3></a></div>
+                    <div class="col-md-4"><a class="btn btn-outline-light btn-block input-pad" href="#" role="button"><h3>8</h3></a></div>
+                    <div class="col-md-4"><a class="btn btn-outline-light btn-block input-pad" href="#" role="button"><h3>9</h3></a></div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-4"><a id="clear"class="btn btn-outline-light btn-block"><h3>Clear</h3></a></div>
+                    <div class="col-md-4"><a class="btn btn-outline-light btn-block input-pad" href="#" role="button"><h3>0</h3></a></div>
+                    <div class="col-md-4"><button id="enter" class="btn btn-outline-light btn-block" value="="><h3>Guess !</h3></button></div>
+                  </div>
+                  
+                </div>
+                <br>
+
+                
+                <br>
+                
+                
+              </div>
+            </div>
+          </div>          
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!--<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>-->
+    <script src="scripts/bootstrap.min.js"></script>
+    <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+    <!--<script src="../../assets/js/vendor/holder.min.js"></script>-->
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <!--<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>-->
+    <script>
+      var range = document.getElementById("range");
+      var guess = document.getElementById("guess");
+      var maxRange, minRange;
+      var answer;
+
+      mainFunction();
+      
+      function mainFunction() {
+        setRandomNumber();
+        setButtonDefaultValue();
+        setDefaultValue();
+        setText();
+        
+      }
+
+      function rangeText(){
+        return minRange + "~" + maxRange;
+      }
+
+      function setText() {
+        range.innerHTML = rangeText();
+        guess.innerHTML = rangeText();
+      }
+
+      function setDefaultValue() {
+        minRange = 0;
+        maxRange = 100;
+        
+      }
+
+      function setButtonDefaultValue() {
+        
+        var inputButtons = document.getElementsByClassName("input-pad");
+        for (var i = 0; i < inputButtons.length; i++){
+          inputButtons[i].onclick = inputButton;
+        }
+        
+        //
+        document.getElementById("clear").onclick = clearButton;
+        document.getElementById("enter").onclick = enterButton;
+
+        
+
+      }
+
+      function setRandomNumber() {
+        
+        answer = (Math.floor( Math.random() * 10 ) + 1) *
+                (Math.floor( Math.random() * 10 ) + 1);
+      }
+
+      function enterButton() {
+        if ( guess.innerHTML < minRange){
+          guess.innerHTML = minRange;
+          return;
+        }
+
+        if (isNaN(guess.innerHTML)) {
+          return;
+        }
+        else if (guess.innerHTML == answer) {
+          winningDoing();
+        }
+        else if (guess.innerHTML > answer) {
+          maxRange = parseInt(guess.innerHTML) ;
+          setText();
+        }
+        else if (guess.innerHTML < answer) {
+          minRange = parseInt(guess.innerHTML);
+          setText();
+        }
+        else {
+          alert("U Need Debug At EnterButton.")
+        }
+      }
+
+      function inputButton(){
+        var text = this.childNodes[0].innerHTML;
+        if(isNaN(guess.innerHTML) || guess.innerHTML == 0) {
+          guess.innerHTML = "";
+        }
+
+        guess.innerHTML = guess.innerHTML + text;
+        if ( guess.innerHTML > maxRange) {
+          guess.innerHTML = maxRange;
+        }
+      }
+
+      function winningDoing() {
+        alert("你獲勝了");
+      }
+
+
+      function clearButton() {
+        guess.innerHTML = rangeText();
+      }
+    </script>
+  </body>
+</html>
