@@ -91,6 +91,7 @@
       var guess = document.getElementById("guess");
       var maxRange, minRange;
       var answer;
+      var countTurn;
 
       mainFunction();
       
@@ -114,6 +115,7 @@
       function setDefaultValue() {
         minRange = 0;
         maxRange = 100;
+        countTurn = 0;
         
       }
 
@@ -147,7 +149,8 @@
         if (isNaN(guess.innerHTML)) {
           return;
         }
-        else if (guess.innerHTML == answer) {
+        countTurn += 1;
+        if (guess.innerHTML == answer) {
           winningDoing();
         }
         else if (guess.innerHTML > answer) {
@@ -161,6 +164,7 @@
         else {
           alert("U Need Debug At EnterButton.")
         }
+        
       }
 
       function inputButton(){
@@ -176,7 +180,10 @@
       }
 
       function winningDoing() {
-        alert("你獲勝了");
+        alert("\n恭喜！你猜對了！\n\n答案是： " + answer + "。\n\n您總共猜了："
+        + countTurn + "次。\n\n按下 '確定' 重新開始！\n\n感謝 Brun。Life 贊助");
+
+        mainFunction();
       }
 
 
