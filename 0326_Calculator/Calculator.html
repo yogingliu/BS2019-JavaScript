@@ -22,7 +22,7 @@
     <div class="container-fluid">
      
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-          <div class="container-fluid  bg-dark ">
+          <div class="container-fluid  bg-dark w-25 ">
             <div class="row">
               <div class="col-md-12">
                 
@@ -48,7 +48,7 @@
                   </div>
                   <div class="row">
                     <div class="col-md-4"><a class="btn btn-outline-light btn-block input-pad" href="#" role="button">0</a></div>
-                    <div class="col-md-4"><a class="btn btn-outline-light btn-block input-pad" href="#" role="button">.</a></div>
+                    <div class="col-md-4"><a class="btn btn-outline-light btn-block dot-button" href="#" role="button">.</a></div>
                   </div>
                   <div class="mt-4 d-flex justify-content-end">
                     <div class="mr-2"><button class="btn btn-primary btn-block input-cal rounded-circle" href="#" value="+" role="button"><i class="fas fa-plus"></i></button></div>
@@ -92,7 +92,6 @@
       var numMemory;
       var input = document.getElementById("input");
       var result = document.getElementById("result");
-
       mainFunction();
       
       function mainFunction() {
@@ -119,9 +118,17 @@
         //
         document.getElementById("clear").onclick = clearButton;
         document.getElementById("equal").onclick = equalButton;
-
+        document.getElementsByClassName("dot-button")[0].onclick = dotButton;
         
+        
+      }
 
+      function dotButton() {
+        var text = this.innerHTML;
+        if (input.value.indexOf(".") == -1) {
+          input.value += text;
+        }
+        
       }
 
       function equalButton() {
@@ -178,7 +185,7 @@
 
       function inputButton(){
         var text = this.innerHTML;
-        if (input.value[0] == 0){
+        if ( (input.value[0] == 0) && (input.value.indexOf(".") == -1) ) {
           input.value = input.value.replace(0 ,"");
         }
         input.value += text;
