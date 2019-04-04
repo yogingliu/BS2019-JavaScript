@@ -1,0 +1,85 @@
+.pic0, .pic1, .pic2, .pic3, .pic4, .pic5, .pic6, .pic7, .pic8, .pic9, .pic10, .pic11, .pic12, .pic13, .pic14, .pic15 {
+  width: 150px;
+  height: 150px;
+}
+
+.pic0, .pic1, .pic2, .pic3, .pic4, .pic5, .pic6, .pic7, .pic8, .pic9, .pic10, .pic11, .pic12, .pic13, .pic14, .pic15 {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border: 1px solid white;
+}
+
+.pic0 {
+  background-color: white;
+}
+
+.pic1 {
+  background: url(../image/cat-humor-believe-in-yourself-kitten-tiger.jpg) 450px 0;
+}
+
+.pic2 {
+  background: url(../image/cat-humor-believe-in-yourself-kitten-tiger.jpg) 300px 0;
+}
+
+.pic3 {
+  background: url(../image/cat-humor-believe-in-yourself-kitten-tiger.jpg) 150px 0;
+}
+
+.pic4 {
+  background: url(../image/cat-humor-believe-in-yourself-kitten-tiger.jpg) 0 450px;
+}
+
+.pic5 {
+  background: url(../image/cat-humor-believe-in-yourself-kitten-tiger.jpg) 450px 450px;
+}
+
+.pic6 {
+  background: url(../image/cat-humor-believe-in-yourself-kitten-tiger.jpg) 300px 450px;
+}
+
+.pic7 {
+  background: url(../image/cat-humor-believe-in-yourself-kitten-tiger.jpg) 150px 450px;
+}
+
+.pic8 {
+  background: url(../image/cat-humor-believe-in-yourself-kitten-tiger.jpg) 0 300px;
+}
+
+.pic9 {
+  background: url(../image/cat-humor-believe-in-yourself-kitten-tiger.jpg) 450px 300px;
+}
+
+.pic10 {
+  background: url(../image/cat-humor-believe-in-yourself-kitten-tiger.jpg) 300px 300px;
+}
+
+.pic11 {
+  background: url(../image/cat-humor-believe-in-yourself-kitten-tiger.jpg) 150px 300px;
+}
+
+.pic12 {
+  background: url(../image/cat-humor-believe-in-yourself-kitten-tiger.jpg) 0 150px;
+}
+
+.pic13 {
+  background: url(../image/cat-humor-believe-in-yourself-kitten-tiger.jpg) 450px 150px;
+}
+
+.pic14 {
+  background: url(../image/cat-humor-believe-in-yourself-kitten-tiger.jpg) 300px 150px;
+}
+
+.pic15 {
+  background: url(../image/cat-humor-believe-in-yourself-kitten-tiger.jpg) 150px 150px;
+}
+
+.row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.canMove:hover {
+  cursor: pointer;
+}
+/*# sourceMappingURL=style.css.map */

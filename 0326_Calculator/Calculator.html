@@ -29,7 +29,7 @@
                 <div id="buttons">
                     <div class="input-group mb-3">
                   
-                        <input id="result" class="form-control text-right" type="number" name="temperature" value="0" readonly>
+                        <input id="result" class="form-control text-right" type="text" name="temperature" value="0" readonly>
                       </div>
                   <div class="row">
                     <div class="col-md-4"><a class="btn btn-outline-light btn-block input-pad" href="#" role="button">1</a></div>
@@ -91,7 +91,9 @@
       var calMemory;
       var numMemory;
       var input = document.getElementById("input");
+      // var input = {value:"0"};
       var result = document.getElementById("result");
+      
       mainFunction();
       
       function mainFunction() {
@@ -143,6 +145,10 @@
       function calcuButton() {
         
         if(result.value==0) {
+
+          if(input.value[input.value.length-1] == '.'){
+            input.value -= '.';
+          }
           result.value = input.value;
         }
         if(calMemory!=null){
@@ -151,20 +157,19 @@
         calMemory = this.value;
         input.value = 0;
       }
-
+      
       function calcuResult(calOperation) {
         
 
         switch (calOperation) {
           case "+":
             result.value = parseFloat(result.value) + parseFloat(input.value);
-            
             break;
           case "-":
             result.value = parseFloat(result.value) - parseFloat(input.value);
             break;
           case "*":
-           result.value = parseFloat(result.value) * parseFloat(input.value);
+            result.value = parseFloat(result.value) * parseFloat(input.value);
             break;
           case "/":
             result.value = parseFloat(result.value) / parseFloat(input.value);

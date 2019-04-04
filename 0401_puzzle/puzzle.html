@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="stylesheets/style.css">
+</head>
+<body>
+    <button id="random">打亂一波</button>
+    <div id="all">
+
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+    <script>
+        var allX;
+        var allY; 
+        var canMoveClass;
+        var whitePuzzleClass;
+        mainFunction();
+
+
+
+        function mainFunction() {
+            setDefaultSetting();
+            setRandomButtonClick();
+            setMoveItems();
+            
+        }
+
+        function setDefaultSetting() {
+            setDefaultSize();
+            setDefaultClass();
+            setDefaultBox();
+        }
+
+        function setMoveItems() {
+            setWhoCanMove();
+            setCanMoveBoxOnclick();
+        }
+
+        function setRandomButtonClick() {
+            document.getElementById("random").addEventListener("click",
+            RandomButtonClickEvent
+            );
+        }
+
+        function RandomButtonClickEvent() {
+            var event = new MouseEvent("click",
+            canMoveClickEvent);
+
+            var randomTurn = Math.floor( Math.random() * 51 + 50);//50-100 
+            while(randomTurn > 0) {
+                var randomCanMoveIndex = Math.floor( Math.random() * document.getElementsByClassName(canMoveClass).length);
+                document.getElementsByClassName(canMoveClass)[randomCanMoveIndex].dispatchEvent(event);
+                randomTurn --;
+            }
+            
+        }
+
+        function setDefaultSize() {
+            allX = 4;
+            allY = 4;   
+        }
+
+        function setDefaultClass() {
+            canMoveClass = "canMove";
+            // cantMoveClass = "cantMove";
+            whitePuzzleClass = "pic0";
+        }
+
+        function setDefaultBox() {
+            for (var j = 0; j<allY; j++){
+                var row = document.createElement("div");
+                row.classList.add("row","row"+j);
+            
+                for (var i = 0; i<allX; i++) {
+                    var column = document.createElement("div");
+                    column.classList.add("single", "pic"+(j*4+i));
+                    column.setAttribute("id", (j*4+i) );
+                    row.appendChild(column);
+                }
+                document.getElementById("all").appendChild(row);
+            }
+        }
+
+        function removeWhoCanMove() {
+            while(document.getElementsByClassName(canMoveClass).length>0) {
+                // document.getElementsByClassName(canMoveClass)[0].classList.add(cantMoveClass);
+                document.getElementsByClassName(canMoveClass)[0].classList.remove(canMoveClass);
+           }
+        }
+
+        function setWhoCanMove() {
+            var whitePlaceId = document.getElementsByClassName(whitePuzzleClass)[0].id;
+            var whitePlaceIdNum = parseInt(whitePlaceId) ;
+            // var whiteRow = Math.floor(whitePlaceId[whitePlaceId.length-1] / allX);
+            // var whiteCol = Math.floor(whitePlaceId[whitePlaceId.length-1] % allX);
+            
+            removeWhoCanMove();   
+            
+            var topIdNum = whitePlaceIdNum - allX;
+            var buttomIdNum = whitePlaceIdNum + allX;
+            var leftIdNum = whitePlaceIdNum - 1;
+            var rightIdNum = whitePlaceIdNum + 1;
+
+            var aroundArray = new Array(topIdNum, buttomIdNum, leftIdNum, rightIdNum);
+            aroundArray.forEach( function(item) {
+                if(document.getElementById(item) != null) {
+                    
+                    document.getElementById(item).classList.add(canMoveClass);
+                }
+            });
+            
+            
+        }
+
+        function removeAllBoxOnclick() {
+            var allBox = document.getElementsByClassName("single");
+            for(var index = 0; index<allBox.length; index++) {
+                allBox[index].removeEventListener("click",
+                canMoveClickEvent);
+            };
+        }
+
+        function setCanMoveBoxOnclick() {
+            removeAllBoxOnclick();
+            var canMoveBox = document.getElementsByClassName(canMoveClass);
+            for(var index = 0; index<canMoveBox.length; index++) {
+                canMoveBox[index].addEventListener("click",
+                canMoveClickEvent);
+            };
+        }
+
+        function canMoveClickEvent() {
+            var beforeWhiteBox = document.getElementsByClassName(whitePuzzleClass)[0];
+            beforeWhiteBox.classList.replace(beforeWhiteBox.classList[1], this.classList[1]);
+            this.classList.replace(this.classList[1], whitePuzzleClass);
+            setMoveItems();
+        }
+
+
+    </script>
+    
+</body>
+</html>

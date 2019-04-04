@@ -1,0 +1,120 @@
+$all-X : 600px;
+$all-Y : 600px;
+$all-Xcut : 4;
+$all-Ycut : 4;
+
+%single-puzzle-size {
+    width: $all-X / $all-Xcut;
+    height: $all-Y / $all-Ycut;
+}
+
+%single-puzzle-type {
+    box-sizing: border-box;
+    border: 1px solid white;
+}
+
+.pic0 {
+    background-color: white;
+    @extend %single-puzzle-size;     
+    @extend %single-puzzle-type; 
+}
+
+.pic1 {
+    background: url(../image/cat-humor-believe-in-yourself-kitten-tiger.jpg) 450px 0;
+    @extend %single-puzzle-size;    
+     @extend %single-puzzle-type;
+}
+
+.pic2 {
+    background: url(../image/cat-humor-believe-in-yourself-kitten-tiger.jpg) 300px 0;
+    @extend %single-puzzle-size;     
+    @extend %single-puzzle-type;
+}
+
+.pic3 {
+    background: url(../image/cat-humor-believe-in-yourself-kitten-tiger.jpg) 150px 0;
+    @extend %single-puzzle-size;     
+    @extend %single-puzzle-type;
+}
+
+.pic4 {
+    background: url(../image/cat-humor-believe-in-yourself-kitten-tiger.jpg) 0 450px;
+    @extend %single-puzzle-size;     
+    @extend %single-puzzle-type;
+}
+
+.pic5 {
+    background: url(../image/cat-humor-believe-in-yourself-kitten-tiger.jpg) 450px 450px;
+    @extend %single-puzzle-size;     
+    @extend %single-puzzle-type;
+}
+
+.pic6 {
+    background: url(../image/cat-humor-believe-in-yourself-kitten-tiger.jpg) 300px 450px;
+    @extend %single-puzzle-size;    
+     @extend %single-puzzle-type;
+}
+
+.pic7 {
+    background: url(../image/cat-humor-believe-in-yourself-kitten-tiger.jpg) 150px 450px;
+    @extend %single-puzzle-size;    
+    @extend %single-puzzle-type;
+}
+
+.pic8 {
+    background: url(../image/cat-humor-believe-in-yourself-kitten-tiger.jpg) 0 300px;
+    @extend %single-puzzle-size;     
+    @extend %single-puzzle-type;
+}
+
+.pic9 {
+    background: url(../image/cat-humor-believe-in-yourself-kitten-tiger.jpg) 450px 300px;
+    @extend %single-puzzle-size;     
+    @extend %single-puzzle-type;
+}
+
+.pic10 {
+    background: url(../image/cat-humor-believe-in-yourself-kitten-tiger.jpg) 300px 300px;
+    @extend %single-puzzle-size;     
+    @extend %single-puzzle-type;
+}
+
+.pic11 {
+    background: url(../image/cat-humor-believe-in-yourself-kitten-tiger.jpg) 150px 300px;
+    @extend %single-puzzle-size;     
+    @extend %single-puzzle-type;
+}
+
+.pic12 {
+    background: url(../image/cat-humor-believe-in-yourself-kitten-tiger.jpg) 0 150px;
+    @extend %single-puzzle-size;     
+    @extend %single-puzzle-type;
+}
+
+.pic13 {
+    background: url(../image/cat-humor-believe-in-yourself-kitten-tiger.jpg) 450px 150px;
+    @extend %single-puzzle-size;     
+    @extend %single-puzzle-type;
+}
+
+.pic14 {
+    background: url(../image/cat-humor-believe-in-yourself-kitten-tiger.jpg) 300px 150px;
+    @extend %single-puzzle-size;     
+    @extend %single-puzzle-type;
+}
+
+.pic15 {
+    background: url(../image/cat-humor-believe-in-yourself-kitten-tiger.jpg) 150px 150px;
+    @extend %single-puzzle-size;     
+    @extend %single-puzzle-type;
+}
+
+.row {
+    display: flex;
+}
+
+.canMove {
+    &:hover {
+        cursor: pointer;
+    }
+}
