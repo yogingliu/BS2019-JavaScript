@@ -17,15 +17,16 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
     crossorigin="anonymous"></script>
     <script>
-        var allX;
-        var allY; 
-        var canMoveClass;
-        var whitePuzzleClass;
+        var allX, allY; 
+        var canMoveClass, whitePuzzleClass;
+        var isWin;
+        var isNotInRandom;
         mainFunction();
 
 
 
         function mainFunction() {
+            setDefaultValue();
             setDefaultSetting();
             setRandomButtonClick();
             setMoveItems();
@@ -54,12 +55,20 @@
             canMoveClickEvent);
 
             var randomTurn = Math.floor( Math.random() * 51 + 50);//50-100 
+
+            isNotInRandom = false;
             while(randomTurn > 0) {
                 var randomCanMoveIndex = Math.floor( Math.random() * document.getElementsByClassName(canMoveClass).length);
                 document.getElementsByClassName(canMoveClass)[randomCanMoveIndex].dispatchEvent(event);
                 randomTurn --;
             }
+            isNotInRandom = true;
             
+        }
+
+        function setDefaultValue() {
+            isWin = false;
+            isNotInRandom = true;
         }
 
         function setDefaultSize() {
@@ -141,9 +150,31 @@
             beforeWhiteBox.classList.replace(beforeWhiteBox.classList[1], this.classList[1]);
             this.classList.replace(this.classList[1], whitePuzzleClass);
             setMoveItems();
+
+            if (isNotInRandom) {
+                checkWin();
+                if (isWin) {
+                    whenWinDoing();
+                }
+            }
         }
 
+        function checkWin() {
+            var all = document.getElementsByClassName("single");
+            isWin = true;
+            for(var i = 0; i<all.length; i++) {
+                var picClassNum = all[i].classList[1].replace("pic", "");
+                if (picClassNum != all[i].id) {
+                    isWin = false;
+                    break;
+                }
+            }
 
+        }
+
+        function whenWinDoing() {
+            alert("還原成功！");
+        }
     </script>
     
 </body>
