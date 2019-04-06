@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>16宮格拼圖</title>
+    <title>16宮格拼圖 1.0版本</title>
     <link rel="stylesheet" href="stylesheets/style.css">
 </head>
 <body>
@@ -89,8 +89,8 @@
             
                 for (var i = 0; i<allX; i++) {
                     var column = document.createElement("div");
-                    column.classList.add("single", "pic"+(j*4+i));
-                    column.setAttribute("id", (j*4+i) );
+                    column.classList.add("single", "pic"+(j*allX+i));
+                    column.setAttribute("id", (j*allX+i) );
                     row.appendChild(column);
                 }
                 document.getElementById("all").appendChild(row);
@@ -146,10 +146,13 @@
         }
 
         function canMoveClickEvent() {
+            
             var beforeWhiteBox = document.getElementsByClassName(whitePuzzleClass)[0];
             beforeWhiteBox.classList.replace(beforeWhiteBox.classList[1], this.classList[1]);
             this.classList.replace(this.classList[1], whitePuzzleClass);
             setMoveItems();
+            // moveAnimate(this);
+            
 
             if (isNotInRandom) {
                 checkWin();
@@ -158,6 +161,10 @@
                 }
             }
         }
+
+        // function moveAnimate(clickItem) {
+        //     console.log(clickItem.classList);
+        // }
 
         function checkWin() {
             var all = document.getElementsByClassName("single");
