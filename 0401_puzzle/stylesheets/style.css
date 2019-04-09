@@ -7,6 +7,25 @@
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   border: 1px solid white;
+  position: relative;
+}
+
+@-webkit-keyframes moving-left {
+  from {
+    right: 0;
+  }
+  to {
+    right: 150px;
+  }
+}
+
+@keyframes moving-left {
+  from {
+    right: 0;
+  }
+  to {
+    right: 150px;
+  }
 }
 
 .pic0 {

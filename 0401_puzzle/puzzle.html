@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>16宮格拼圖 1.0版本</title>
+    <title>16宮格拼圖 2.0版本</title>
     <link rel="stylesheet" href="stylesheets/style.css">
 </head>
 <body>
@@ -17,7 +17,7 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
     crossorigin="anonymous"></script>
     <script>
-        var allX, allY; 
+        var allX, allY, xPixel, yPixel; 
         var canMoveClass, whitePuzzleClass;
         var isWin;
         var isNotInRandom;
@@ -73,7 +73,9 @@
 
         function setDefaultSize() {
             allX = 4;
-            allY = 4;   
+            allY = 4;
+            xPixel = 600;
+            yPixel = 600;   
         }
 
         function setDefaultClass() {
@@ -146,12 +148,18 @@
         }
 
         function canMoveClickEvent() {
-            
             var beforeWhiteBox = document.getElementsByClassName(whitePuzzleClass)[0];
+
+            if(isNotInRandom){
+                moveAnimate(this);
+            };
+            
+            
+
             beforeWhiteBox.classList.replace(beforeWhiteBox.classList[1], this.classList[1]);
             this.classList.replace(this.classList[1], whitePuzzleClass);
             setMoveItems();
-            // moveAnimate(this);
+            
             
 
             if (isNotInRandom) {
@@ -162,9 +170,83 @@
             }
         }
 
-        // function moveAnimate(clickItem) {
-        //     console.log(clickItem.classList);
-        // }
+        function moveAnimate(clickItem) {
+            var whiteBox = document.getElementsByClassName(whitePuzzleClass)[0];
+            
+            var temporarilyWhite1 = document.createElement("div");
+            temporarilyWhite1.setAttribute("id", "tempo1");
+            temporarilyWhite1.setAttribute("style", "background:white; z-index:1;\
+            width:" + xPixel/allX + "px; height:" + yPixel/allY + "px;");
+
+            var temporarilyWhite2 = document.createElement("div");
+            temporarilyWhite2.setAttribute("id", "tempo2");
+            temporarilyWhite2.setAttribute("style", "background:white; z-index:1;\
+            width:" + xPixel/allX + "px; height:" + yPixel/allY + "px;");
+
+            var animateBox = document.createElement("div");
+            animateBox.classList.add(clickItem.classList[1]);
+            animateBox.setAttribute("id", "animate")
+            animateBox.setAttribute("style", "z-index:2; position: absolute;");
+
+            // temporarilyWhite1.appendChild(animateBox);
+            clickItem.appendChild(animateBox);
+
+            clickItem.appendChild(temporarilyWhite1);
+            whiteBox.appendChild(temporarilyWhite2);
+
+           
+
+            var removeBox = function() {
+                    document.getElementById("tempo1").remove();
+                    animateBox.remove();
+                    document.getElementById("tempo2").remove();
+                    // clickItem.removeChild(document.getElementById("tempo1"));
+                    // clickItem.removeChild(animateBox);
+                    // whiteBox.removeChild(document.getElementById("tempo2"));
+                
+            };
+
+            switch(whereIsIt(clickItem, whiteBox)) {
+                case "top":
+                    $(animateBox).animate({bottom: yPixel/allY + "px"},150, removeBox);
+                    break;
+                case "bottom":
+                    $(animateBox).animate({top: yPixel/allY + "px"},150, removeBox);
+                    break;
+                case "left":
+                    $(animateBox).animate({right: xPixel/allX + "px"},150, removeBox);
+                    break;
+                case "right":
+                    $(animateBox).animate({left: xPixel/allX + "px"},150, removeBox);
+                    break;
+                    
+            }
+
+            // need promise
+            // clickItem.removeChild(document.getElementById("tempo1"));
+            // clickItem.removeChild(animateBox);
+            // whiteBox.removeChild(document.getElementById("tempo2"));
+            // clickItem.removeChild(animateBox);
+
+
+        }
+
+        function whereIsIt(target, findThis) {
+            var targetId = parseInt(target.id);
+            var findthisId = parseInt(findThis.id);
+
+            switch(findthisId) {
+                case targetId - allX:
+                    return "top";
+                case targetId + allX:
+                    return "bottom";
+                case targetId + 1:
+                    return "right";
+                case targetId - 1:
+                    return "left";
+            }
+            return "error";
+        }
 
         function checkWin() {
             var all = document.getElementsByClassName("single");

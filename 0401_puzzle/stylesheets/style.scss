@@ -14,6 +14,15 @@ $all-Ycut : 4;
     position: relative;
 }
 
+@keyframes moving-left {
+    from {
+        right: 0;
+    }
+    to {
+        right: $all-X/$all-Xcut;
+    }
+  }
+
 .pic0 {
     background-color: white;
     @extend %single-puzzle-size;     
