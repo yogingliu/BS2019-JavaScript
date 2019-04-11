@@ -4,15 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>記憶遊戲 1.0版</title>
+    <title>記憶遊戲 2.0版</title>
 
     <link rel="stylesheet" href="stylesheets/stylesheet.css">
 </head>
 <body>
     <div class="all">
-        <h1>記憶遊戲 1.0陽春版</h1>
+        <h1>記憶遊戲 2.0陽春版</h1>
+        <form>
+            <h2>請選擇要幾排(每排四個)</h2>
+            <select id="colNum" >
+                <option value="0">0</option>
+                <option value="1">1</option>
+            　  <option value="2" selected="true">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+            </select>
+        </form>
         <button id="start">開始新局</button>
-        <div class="table">
+        <div class="table" id="table1">
             
         </div>
     </div>
@@ -29,12 +41,15 @@
     var deck;
     var isOpenOne;
     var openCard, closeCard;
+    var colNum;
 
     mainFunction();
 
     function mainFunction() {
+        clearTable()
         setDefaultValue();
         createCard();
+        colNum.addEventListener("change", mainFunction);
         setStartButton();
     }
 
@@ -43,8 +58,18 @@
     }
 
     function startEvent() {
+        if(colNum.value == 0) {
+            alert("你還真的選0條呀，重選吧！")
+            return;
+        }
+        self.location.href = "#table1";
+        clearTable();
+        setDefaultValue();
+        createCard();
         setCardNum();
         displayCard();
+
+        colNum.removeEventListener("change", startEvent);
 
         window.setTimeout(function(){
             closeAllCard();
@@ -52,6 +77,11 @@
         }, 3000);
         
     }
+
+    function clearTable() {
+        document.getElementsByClassName("table")[0].innerHTML = "";
+    }
+
     function displayCard() {
         while (closeCard.length>0) {
             closeCard[0].classList.replace(closeClass, openClass);
@@ -64,10 +94,14 @@
         }
     }
 
+    
+
     function setDefaultValue() {
-        column = 4;
         closeClass = "back", openClass = "front", singleCardClass="card", clearClass="clear";
         openCard = document.getElementsByClassName("front"), closeCard = document.getElementsByClassName("back");
+        colNum = document.getElementById("colNum");
+        
+        column = colNum.value;
 
         isOpenOne = false;
 
@@ -96,7 +130,7 @@
                 cardBox.classList.add(singleCardClass, closeClass);
                 
                 var numWord = document.createElement("span");
-                numWord.className = "number"
+                numWord.className = "number";
                 
                 cardBox.appendChild(numWord);
                 col.appendChild(cardBox);
@@ -122,6 +156,7 @@
         }
 
         for(var i = 0; i<cardNum.length; i++){
+            cardNum[i].classList
             var index = Math.floor(Math.random() * differentNumArray.length);
             cardNum[i].innerHTML = differentNumArray.splice(index, 1);
         }
@@ -201,12 +236,18 @@
 
     function checkWin() {
         if (closeCard.length == 0) {
-            whenWinDoing();
+            window.setTimeout(function(){
+                whenWinDoing();
+            }, 1400);
+            
         }
+        
     }
 
     function whenWinDoing() {
-        alert ("獲勝拉，目前版本還不能幫你計時呢，更新後再來挑戰看看吧！")
+        alert ("獲勝拉，目前版本還不能幫你計時呢，更新後再來挑戰看看吧！");
+        mainFunction();
+        
     }
     
     
