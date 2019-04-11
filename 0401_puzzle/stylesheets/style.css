@@ -92,10 +92,30 @@
   background: url(../image/cat-humor-believe-in-yourself-kitten-tiger.jpg) 150px 150px;
 }
 
+.top-block {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#random {
+  width: 150px;
+  background-color: white;
+  font-weight: bold;
+  font-size: 16px;
+  margin-right: 20px;
+}
+
 .row {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .canMove:hover {

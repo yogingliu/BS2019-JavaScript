@@ -23,6 +23,7 @@ $all-Ycut : 4;
     }
   }
 
+
 .pic0 {
     background-color: white;
     @extend %single-puzzle-size;     
@@ -119,8 +120,22 @@ $all-Ycut : 4;
     @extend %single-puzzle-type;
 }
 
+.top-block {
+    display: flex;
+    justify-content: center;
+}
+
+#random {
+    width: 150px;
+    background-color: white;
+    font-weight: bold;
+    font-size: 16px;
+    margin-right: 20px;
+}
+
 .row {
     display: flex;
+    justify-content: center;
 }
 
 .canMove {

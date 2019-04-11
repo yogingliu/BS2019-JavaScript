@@ -4,13 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>16宮格拼圖 2.0版本</title>
+    <title>16宮格拼圖 2.1版本</title>
     <link rel="stylesheet" href="stylesheets/style.css">
 </head>
 <body>
-    <button id="random">打亂一波</button>
+    
+    
     <div id="all">
-
+        <div class="top-block">
+            <button id="random">打亂一波</button>
+            <h1><span class="hour">00</span>：<span class="min">00 (times open on next version)</span></h1>
+        </div>
     </div>
 
 
@@ -97,6 +101,7 @@
                 }
                 document.getElementById("all").appendChild(row);
             }
+            
         }
 
         function removeWhoCanMove() {
@@ -114,16 +119,37 @@
             
             removeWhoCanMove();   
             
-            var topIdNum = whitePlaceIdNum - allX;
-            var buttomIdNum = whitePlaceIdNum + allX;
-            var leftIdNum = whitePlaceIdNum - 1;
-            var rightIdNum = whitePlaceIdNum + 1;
+            var topIdNum = {
+                value: whitePlaceIdNum - allX, canSet: true };
+            var bottomIdNum = {
+                value: whitePlaceIdNum + allX, canSet: true };
+            var leftIdNum = {
+                value: whitePlaceIdNum - 1, canSet: true };
+            var rightIdNum = {
+                value: whitePlaceIdNum + 1, canSet: true };
 
-            var aroundArray = new Array(topIdNum, buttomIdNum, leftIdNum, rightIdNum);
+            var aroundArray = new Array(topIdNum, bottomIdNum, leftIdNum, rightIdNum);
+            
+            //left
+            if (whitePlaceId % allX == 0) {
+                aroundArray[2].canSet = false;
+            }
+            //right
+            if (whitePlaceId % allX == (allX-1)) {
+                aroundArray[3].canSet = false;
+            }
+            //top
+            if (whitePlaceId < allX) {
+                aroundArray[0].canSet = false;
+            }
+            //bottom
+            if (whitePlaceId >= (allX*allY - allX) ) {
+                aroundArray[1].canSet = false;
+            }
+
             aroundArray.forEach( function(item) {
-                if(document.getElementById(item) != null) {
-                    
-                    document.getElementById(item).classList.add(canMoveClass);
+                if(item.canSet == true) {
+                    document.getElementById(item.value).classList.add(canMoveClass);
                 }
             });
             
@@ -208,16 +234,16 @@
 
             switch(whereIsIt(clickItem, whiteBox)) {
                 case "top":
-                    $(animateBox).animate({bottom: yPixel/allY + "px"},150, removeBox);
+                    $(animateBox).animate({bottom: yPixel/allY + "px"},200, removeBox);
                     break;
                 case "bottom":
-                    $(animateBox).animate({top: yPixel/allY + "px"},150, removeBox);
+                    $(animateBox).animate({top: yPixel/allY + "px"},200, removeBox);
                     break;
                 case "left":
-                    $(animateBox).animate({right: xPixel/allX + "px"},150, removeBox);
+                    $(animateBox).animate({right: xPixel/allX + "px"},200, removeBox);
                     break;
                 case "right":
-                    $(animateBox).animate({left: xPixel/allX + "px"},150, removeBox);
+                    $(animateBox).animate({left: xPixel/allX + "px"},200, removeBox);
                     break;
                     
             }

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div class="all">
+        <div class="table">
+
+        </div>
+    </div>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    <script>
+    
+    var column;
+
+    mainFunction();
+
+    function mainFunction() {
+        column = 2;
+
+        createCard();
+    }
+
+    function changeColumn() {
+
+    }
+
+    function createCard() {
+        
+        for (var i=0; i<column; i++) {
+
+            var col = document.createElement("div");
+            col.className = "column";
+
+            
+            for (var c=0; c<4; c++) {
+                var cardBox = document.createElement("div");
+                cardBox.className = "card";
+                
+                col.appendChild(cardBox);
+            }
+            document.getElementsByClassName("table")[0].appendChild(col);
+        }
+    }
+    
+    </script>
+    
+</body>
+</html>
