@@ -1,0 +1,64 @@
+.all {
+    text-align: center;
+}
+
+h1 {
+    margin-top: 0;
+}
+
+#start {
+    background: #fff;
+    width: 200px;
+    height: 45px;
+}
+
+.table {
+
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+}
+
+.card {
+    width: 100px;
+    height: 150px;
+    margin: 5px;
+    border: 2px solid gray;
+    
+}
+
+.back {
+    background: #000;
+    span {
+        display: none;
+    }
+
+    &:hover {
+        cursor: pointer;
+        background: #404040;
+    }
+}
+
+.front {
+    background: #fff;
+    font-size: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+        span {
+            color: #000;
+            display: block;
+            margin: 0 auto;
+            
+        }
+    
+}
+
+.clear {
+    background: transparent;
+    span {
+        display: none;
+    }
+}
+
+

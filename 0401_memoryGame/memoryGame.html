@@ -4,12 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>記憶遊戲 1.0版</title>
+
+    <link rel="stylesheet" href="stylesheets/stylesheet.css">
 </head>
 <body>
     <div class="all">
+        <h1>記憶遊戲 1.0陽春版</h1>
+        <button id="start">開始新局</button>
         <div class="table">
-
+            
         </div>
     </div>
 
@@ -21,13 +25,58 @@
     <script>
     
     var column;
+    var closeClass, openClass, clearClass, singleCardClass;
+    var deck;
+    var isOpenOne;
+    var openCard, closeCard;
 
     mainFunction();
 
     function mainFunction() {
-        column = 2;
-
+        setDefaultValue();
         createCard();
+        setStartButton();
+    }
+
+    function setStartButton() {
+        document.getElementById("start").addEventListener("click", startEvent);
+    }
+
+    function startEvent() {
+        setCardNum();
+        displayCard();
+
+        window.setTimeout(function(){
+            closeAllCard();
+            setBackClick();
+        }, 3000);
+        
+    }
+    function displayCard() {
+        while (closeCard.length>0) {
+            closeCard[0].classList.replace(closeClass, openClass);
+        }
+    }
+
+    function closeAllCard() {
+        while (openCard.length>0) {
+            openCard[0].classList.replace(openClass, closeClass);
+        }
+    }
+
+    function setDefaultValue() {
+        column = 4;
+        closeClass = "back", openClass = "front", singleCardClass="card", clearClass="clear";
+        openCard = document.getElementsByClassName("front"), closeCard = document.getElementsByClassName("back");
+
+        isOpenOne = false;
+
+        deck = [
+            {suit:"♠️", number: ["1","2","3","4","5","6","7","8","9","10","J","Q","K"]},
+            {suit:"♥️", number: ["1","2","3","4","5","6","7","8","9","10","J","Q","K"]},
+            {suit:"♦️", number: ["1","2","3","4","5","6","7","8","9","10","J","Q","K"]},
+            {suit:"♣️", number: ["1","2","3","4","5","6","7","8","9","10","J","Q","K"]},
+        ];
     }
 
     function changeColumn() {
@@ -44,13 +93,122 @@
             
             for (var c=0; c<4; c++) {
                 var cardBox = document.createElement("div");
-                cardBox.className = "card";
+                cardBox.classList.add(singleCardClass, closeClass);
                 
+                var numWord = document.createElement("span");
+                numWord.className = "number"
+                
+                cardBox.appendChild(numWord);
                 col.appendChild(cardBox);
             }
             document.getElementsByClassName("table")[0].appendChild(col);
         }
     }
+
+    function setCardNum() {
+        var cardNum = document.getElementsByClassName("number");
+        var howManyDiffrerntNum = cardNum.length / 2;
+        var differentNumArray = [];
+
+        for(var i = 0; i<howManyDiffrerntNum; i++) {
+            var num = "";
+            var suitIndex = deck[Math.floor(Math.random() * 4)];
+            num += suitIndex.suit;
+            num += suitIndex.number.splice(
+                Math.floor(Math.random()*suitIndex.number.length), 1);
+            
+            differentNumArray.push(num);
+            differentNumArray.push(num);
+        }
+
+        for(var i = 0; i<cardNum.length; i++){
+            var index = Math.floor(Math.random() * differentNumArray.length);
+            cardNum[i].innerHTML = differentNumArray.splice(index, 1);
+        }
+        
+    }
+
+    function setBackClick() {
+        for(var i = 0; i<closeCard.length; i++) {
+            closeCard[i].addEventListener("click", backClickEvent);
+        }
+    }
+
+    function removeBackClick() {
+        for(var i = 0; i<closeCard.length; i++) {
+            closeCard[i].removeEventListener("click", backClickEvent);
+        }
+    }
+
+    function backClickEvent() {
+        this.classList.replace(closeClass, openClass);
+        
+        if (isOpenOne) {
+
+            if(openCardIsSame()) {
+                removeBackClick();
+                openSameDoing();
+                checkWin();
+                
+            }
+            else {
+                removeBackClick();
+                openDifferentDoing();
+            }
+            isOpenOne = false;
+        }
+        else {
+            isOpenOne = true;
+        }
+
+        this.removeEventListener("click", backClickEvent);
+    }
+
+    function openCardIsSame() {
+
+        for(var i = 0; i<openCard.length-1;) {
+            if (openCard[i].childNodes[0].innerHTML != openCard[++i].childNodes[0].innerHTML) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    function openSameDoing() {
+
+        window.setTimeout(function(){
+            while(openCard.length > 0){
+            openCard[0].className = singleCardClass + " " + clearClass;
+            setBackClick();
+        }
+        }, 1000);
+
+        
+    }
+
+    function openDifferentDoing() {
+        
+        window.setTimeout(function(){
+
+            while(openCard.length > 0){
+                openCard[0].classList.replace(openClass, closeClass);
+            }
+            setBackClick()
+        }, 1000);
+        
+
+    }
+
+    function checkWin() {
+        if (closeCard.length == 0) {
+            whenWinDoing();
+        }
+    }
+
+    function whenWinDoing() {
+        alert ("獲勝拉，目前版本還不能幫你計時呢，更新後再來挑戰看看吧！")
+    }
+    
     
     </script>
     
