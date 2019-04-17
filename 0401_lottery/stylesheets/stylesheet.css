@@ -1,0 +1,49 @@
+.container {
+  width: 840px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+html {
+  background: #000;
+  color: #fff;
+}
+
+.numberRangeBlock {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.hasDrawedBox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.animateBox {
+  width: 300px;
+  height: 400px;
+  background: gray;
+  margin: 30px auto;
+}
+
+#drawButton {
+  width: 100px;
+  height: 50px;
+  background: #f00;
+  border: 0;
+  color: #fff;
+  font-size: 20px;
+}
+
+#minNumInput {
+  margin-right: 15px;
+}
+/*# sourceMappingURL=stylesheet.css.map */

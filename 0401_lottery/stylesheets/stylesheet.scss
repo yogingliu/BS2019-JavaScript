@@ -1,0 +1,41 @@
+.container {
+    width: 840px;
+    margin: 0 auto;
+    text-align: center;
+    
+}
+
+html {
+    background: #000;
+    color: #fff;
+}
+
+.numberRangeBlock {
+    display: flex;
+    justify-content: center;
+}
+
+.hasDrawedBox {
+    display: flex;
+    justify-content: center;
+}
+
+.animateBox {
+    width: 300px;
+    height: 400px;
+    background: gray;
+    margin: 30px auto;
+}
+
+#drawButton {
+    width: 100px;
+    height: 50px;
+    background: #f00;
+    border: 0;
+    color: #fff;
+    font-size: 20px;
+}
+
+#minNumInput {
+    margin-right: 15px;
+}
