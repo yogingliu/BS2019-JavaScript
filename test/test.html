@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>testuse</title>
+    <link rel="stylesheet" href="stylesheets/style.css">
+    <style>
+        body{
+            background: #000;
+        }
+        .text{
+
+            width: 200px;
+            height: 80px;
+            background: #fff;
+            
+        }
+        .show{
+            width: 200px;
+            height: 80px;
+            background: #fff;
+        }
+        .button{
+            width: 100px;
+            height: 40px;
+        }
+    </style>
+</head>
+<body>
+    
+    <div>
+        <input type="text" class="text">
+        <div class="show"></div>
+        <button class="button">button</button>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+    <script>
+        var text = document.getElementsByClassName("text")[0];
+        var show = document.getElementsByClassName("show")[0];
+        var button = document.getElementsByClassName("button")[0];
+
+        button.addEventListener("click",
+        evalit
+        );
+        function evalit(){
+            var r = eval(text.value);
+            show.innerHTML = r;
+            
+        }
+        
+</script>
+    
+</body>
+</html>

@@ -34,16 +34,31 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
     crossorigin="anonymous"></script>
     <script>
+        var minNum, maxNum, numArray,
+            $minNumInput, $maxNumInput;
+
         $(function(){
+            
 
+            
+            
 
+            
+        });
 
+        function setDefaultValue() {
+            $minNumInput = $("#minNumInput");
+            $maxNumInput = $("#maxNumInput");
+        }
 
+        function setNumArray() {
+            minNum = $minNumInput.val();
+            numArray = Array.from({length: maxNum-minNum+1}, (v, i) => i+min);
+        }
 
-
-
-
-        })
+        function checkInputNum() {
+            
+        }
     </script>
 </body>
 </html>
