@@ -129,6 +129,7 @@
         }
 
         function restartTimer() {
+            tmr = clearInterval(tmr);
             sec = 0, min = 0;
             tmr = setInterval(updateTimer, 1000);
         }
