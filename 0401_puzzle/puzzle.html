@@ -348,6 +348,7 @@
 
         function whenWinDoing() {
             tmr = clearInterval(tmr);
+            removeWhoCanMove();
             removeAllBoxOnclick();
             window.setTimeout(function() {
                 alert("還原成功！\n花費時間： " + min + " 分 " + sec + "秒\
