@@ -135,7 +135,9 @@
 
         function updateTimer() {
             sec++;
-            min = Math.floor(sec / 60);
+            if(Math.floor(sec / 60) ) {
+                min ++;
+            }
             sec = sec % 60;
 
             setTimerText();
