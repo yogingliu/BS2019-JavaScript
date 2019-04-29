@@ -13,7 +13,7 @@
     <div id="all">
         <div class="top-block">
             <button id="random">打亂一波</button>
-            <h1><span class="hour">00</span>：<span class="min">00 (times open on next version)</span></h1>
+            <h1><span id="min">00</span>:<span id="sec">00</span></h1>
         </div>
     </div>
 
@@ -25,22 +25,28 @@
         var canMoveClass, whitePuzzleClass;
         var isWin;
         var isNotInRandom;
+        var tmr, sec, min;
+        var minDom, secDom;
+        var count;
         mainFunction();
 
 
 
         function mainFunction() {
-            setDefaultValue();
+            clearAllBox();
             setDefaultSetting();
             setRandomButtonClick();
             setMoveItems();
+            setTimerText();
             
         }
 
         function setDefaultSetting() {
+            setDefaultValue();
             setDefaultSize();
             setDefaultClass();
             setDefaultBox();
+            setDefaultDom();
         }
 
         function setMoveItems() {
@@ -55,6 +61,7 @@
         }
 
         function RandomButtonClickEvent() {
+            mainFunction();
             var event = new MouseEvent("click",
             canMoveClickEvent);
 
@@ -68,11 +75,15 @@
             }
             isNotInRandom = true;
             
+            restartTimer();
         }
 
         function setDefaultValue() {
             isWin = false;
             isNotInRandom = true;
+            min = 0;
+            sec = 0;
+            count = 0;
         }
 
         function setDefaultSize() {
@@ -86,6 +97,11 @@
             canMoveClass = "canMove";
             // cantMoveClass = "cantMove";
             whitePuzzleClass = "pic0";
+        }
+
+        function setDefaultDom() {
+            minDom = document.getElementById("min");
+            secDom = document.getElementById("sec");
         }
 
         function setDefaultBox() {
@@ -102,6 +118,45 @@
                 document.getElementById("all").appendChild(row);
             }
             
+        }
+
+        function clearAllBox() {
+            var items =  document.getElementsByClassName("single");
+            while(items.length > 0) {
+                items[0].parentNode.removeChild(items[0]);
+            }
+            
+        }
+
+        function restartTimer() {
+            sec = 0, min = 0;
+            tmr = setInterval(updateTimer, 1000);
+        }
+
+        function updateTimer() {
+            sec++;
+            min = Math.floor(sec / 60);
+            sec = sec % 60;
+
+            setTimerText();
+        }
+
+
+        function setTimerText() {
+            var minText = "", secText = "";
+            if (!Math.floor(sec / 10))
+            {
+                secText += "0";
+            }
+            secText += sec;
+            if (!Math.floor(min / 10))
+            {
+                minText += "0";
+            }
+            minText += min;
+
+            minDom.innerHTML = minText;
+            secDom.innerHTML = secText;
         }
 
         function removeWhoCanMove() {
@@ -177,7 +232,9 @@
             var beforeWhiteBox = document.getElementsByClassName(whitePuzzleClass)[0];
 
             if(isNotInRandom){
+                count++;
                 moveAnimate(this);
+                
             };
             
             
@@ -191,9 +248,7 @@
             if (isNotInRandom) {
                 checkWin();
                 if (isWin) {
-                    window.setTimeout(function(){
-                        whenWinDoing();
-                    }, 400);
+                   whenWinDoing();
                 }
             }
         }
@@ -290,7 +345,13 @@
         }
 
         function whenWinDoing() {
-            alert("還原成功！");
+            tmr = clearInterval(tmr);
+            removeAllBoxOnclick();
+            window.setTimeout(function() {
+                alert("還原成功！\n花費時間： " + min + " 分 " + sec + "秒\
+                \n點擊次數：" + count + " 次" );
+            }, 400);
+            
         }
     </script>
     
