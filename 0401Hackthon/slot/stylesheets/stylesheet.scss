@@ -1,0 +1,19 @@
+#start {
+    height: 64px;
+}
+
+img {
+    width: 80px;
+    height: 50px;
+}
+
+.box {
+    border: none;
+    transition: all .3s;
+}
+
+.current {
+    // border: 2px solid #f00;
+    box-shadow: 0 0 20px #f00 ;
+    transition: all 0s;
+}

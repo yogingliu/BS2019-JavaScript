@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="stylesheets/stylesheet.css">
+    <style>
+        #start {
+            height: 32px;
+            background: rgb(119, 32, 32);
+            color: #fff;
+            font-size: 18px;
+            
+        }
+    </style>
+</head>
+<body class="">
+    <div class="container-fluid">
+        <div id="all" class="">
+                <div class="d-flex justify-content-between w-100 row1">
+                    <div class="singlebox mb-5"><img id="img0" src="Image/logo.png" alt="single-box"></div>
+                    <div class="singlebox mb-5"><img id="img1" src="Image/logo.png" alt="single-box"></div>
+                    <div class="singlebox mb-5"><img id="img2" src="Image/logo.png" alt="single-box"></div>
+                    <div class="singlebox mb-5"><img id="img3" src="Image/logo.png" alt="single-box"></div>
+                    <div class="singlebox mb-5"><img id="img4" src="Image/logo.png" alt="single-box"></div>
+                    <div class="singlebox mb-5"><img id="img5" src="Image/logo.png" alt="single-box"></div>
+                    <div class="singlebox mb-5"><img id="img6" src="Image/logo.png" alt="single-box"></div>
+                    <div class="singlebox mb-5"><img id="img7" src="Image/logo.png" alt="single-box"></div>
+                    <div class="singlebox mb-5"><img id="img8" src="Image/logo.png" alt="single-box"></div>
+                    <div class="singlebox mb-5"><img id="img9" src="Image/logo.png" alt="single-box"></div>
+                    <div class="singlebox mb-5"><img id="img10" src="Image/logo.png" alt="single-box"></div>
+                    <div class="singlebox mb-5"><img id="img11" src="Image/logo.png" alt="single-box"></div>
+                </div>
+                <div class="d-flex justify-content-between">
+                    <div class="d-flex justify-content-around flex-column row2">
+                        <div class="singlebox mb-5"><img id="img31" src="Image/logo.png" alt="single-box"></div>
+                        <div class="singlebox mb-5"><img id="img30" src="Image/logo.png" alt="single-box"></div>
+                        <div class="singlebox mb-5"><img id="img29" src="Image/logo.png" alt="single-box"></div>
+                        <div class="singlebox mb-5"><img id="img28" src="Image/logo.png" alt="single-box"></div>
+                    </div>
+                    <div class="d-flex justify-content-around flex-column row3">
+                        <div class="singlebox mb-5"><img id="img12" src="Image/logo.png" alt="single-box"></div>
+                        <div class="singlebox mb-5"><img id="img13" src="Image/logo.png" alt="single-box"></div>
+                        <div class="singlebox mb-5"><img id="img14" src="Image/logo.png" alt="single-box"></div>
+                        <div class="singlebox mb-5"><img id="img15" src="Image/logo.png" alt="single-box"></div>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-between w-100">
+                    <div class="singlebox mb-5"><img id="img27" src="Image/logo.png" alt="single-box"></div>
+                    <div class="singlebox mb-5"><img id="img26" src="Image/logo.png" alt="single-box"></div>
+                    <div class="singlebox mb-5"><img id="img25" src="Image/logo.png" alt="single-box"></div>
+                    <div class="singlebox mb-5"><img id="img24" src="Image/logo.png" alt="single-box"></div>
+                    <div class="singlebox mb-5"><img id="img23" src="Image/logo.png" alt="single-box"></div>
+                    <div class="singlebox mb-5"><img id="img22" src="Image/logo.png" alt="single-box"></div>
+                    <div class="singlebox mb-5"><img id="img21" src="Image/logo.png" alt="single-box"></div>
+                    <div class="singlebox mb-5"><img id="img20" src="Image/logo.png" alt="single-box"></div>
+                    <div class="singlebox mb-5"><img id="img19" src="Image/logo.png" alt="single-box"></div>
+                    <div class="singlebox mb-5"><img id="img18" src="Image/logo.png" alt="single-box"></div>
+                    <div class="singlebox mb-5"><img id="img17" src="Image/logo.png" alt="single-box"></div>
+                    <div class="singlebox mb-5"><img id="img16" src="Image/logo.png" alt="single-box"></div>
+                </div>
+                <button id="start" class="w-100">開始！</button>
+        </div>
+        
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <script>
+        
+         var boxList;
+         var forwardStep, currentIndex;
+         var forwardSpeed, speedUp;
+
+        mainFunction();
+
+        function mainFunction() {
+            defaultSetting();
+
+            
+        }
+
+        function defaultSetting() {
+            setDefaultValue();
+            setBoxList();
+            setDefaultEvent();
+        }
+
+        function setDefaultValue() {
+            boxList = [];
+            currentIndex = 0;
+        }
+
+        function setDefaultEvent() {
+            document.getElementById("start").addEventListener("click",
+            forwardAction);
+        }
+
+        function setBoxList() {
+            var num = 0;
+
+            while(true) {
+                var box = document.getElementById("img" + num);
+                num++;
+                if(!box) {
+                    break;
+                }
+
+                
+                boxList.push(box);
+            }
+
+        }
+
+        function forwardAction() {
+            forwardStep = boxList.length * 5;
+            forwardStep += Math.floor( Math.random() * boxList.length);
+            speedUp = (2 / Math.PI)/forwardStep;
+            forwardSpeed = 0 - speedUp;
+
+            forwarding();
+
+        }
+
+        function forwarding() {
+            forwardSpeed += speedUp;
+            console.log(forwardSpeed);
+            boxList[currentIndex].className = "box";
+            currentIndex ++;
+
+            if(currentIndex >= boxList.length){
+                currentIndex = 0;
+            }
+
+            boxList[currentIndex].className = "box current";
+
+            if(--forwardStep > 0) {
+                setTimeout(forwarding, Math.sin(-forwardSpeed)*50 +1*50);
+            }
+            
+        }
+
+        // function setDefaultBox() {
+        //     var singleBox = document.createElement("div");
+        //     singleBox.className = "mb-5";
+            
+        //     var singleImg = document.createElement("img");
+        //     singleImg.src = "Image/logo.pngtext=1";
+            
+        //     singleBox.appendChild(singleImg);
+
+        //     var row = document.createElement("div");
+        //     row.className = "d-flex justify-content-between w-100";
+
+        //     var rowCenter = document.createElement("div");
+        //     rowCenter.className = "d-flex justify-content-between";
+
+        //     var column = document.createElement("div");
+        //     column.className = "d-flex justify-content-around flex-column";
+
+        //     var all = document.getElementById("all");
+
+        //     for(var i = 0; i<12; i++) {
+        //         row.appendChild(singleBox.cloneNode(true));
+        //     }
+
+        //     for(var i = 0; i<4; i++) {
+        //         column.appendChild(singleBox.cloneNode(true));
+        //     }
+
+        //     rowCenter.appendChild(column.cloneNode(true));
+        //     rowCenter.appendChild(column.cloneNode(true));
+        //     all.appendChild(row.cloneNode(true));
+        //     all.appendChild(rowCenter);
+        //     all.appendChild(row.cloneNode(true));
+        // }
+    </script>
+</body>
+</html>
